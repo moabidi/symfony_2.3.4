@@ -27,11 +27,11 @@ class Annonce
     /**
      * @var integer
      *
-     * @ORM\Column(name="categpry", type="integer", nullable=false)
+     * @ORM\Column(name="id_category", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumn(name="categpry", referencedColumnName="name")
+     * @ORM\JoinColumn(name="id_category", referencedColumnName="id")
      */
-    private $categpry;
+    private $idCategory;
 
     /**
      * @var integer
@@ -48,7 +48,7 @@ class Annonce
      * @ORM\Column(name="id_type", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="Type", inversedBy="annonces")
      * @ORM\JoinColumn(name="id_type", referencedColumnName="id")
-     * * @Assert\Type(type="Immobilier\ManagerBundle\Entity\Type")
+     * @Assert\Type(type="Immobilier\ManagerBundle\Entity\Type")
      */
     private $idType;
 
@@ -134,26 +134,26 @@ class Annonce
     }
 
     /**
-     * Set categpry
+     * Set idCategory
      *
-     * @param integer $categpry
+     * @param integer $idCategory
      * @return Annonce
      */
-    public function setCategpry($categpry)
+    public function setIdCategory($idCategory)
     {
-        $this->categpry = $categpry;
+        $this->idCategory = $idCategory;
     
         return $this;
     }
 
     /**
-     * Get categpry
+     * Get idCategory
      *
      * @return integer 
      */
-    public function getCategpry()
+    public function getIdCategory()
     {
-        return $this->categpry;
+        return $this->idCategory;
     }
 
     /**

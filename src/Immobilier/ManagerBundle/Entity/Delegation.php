@@ -4,7 +4,7 @@ namespace Immobilier\ManagerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Immobilier\ManagerBundle\Entity\Gouvernorat;
+//use Immobilier\ManagerBundle\Entity\Gouvernorat;
 
 
 /**
@@ -35,10 +35,10 @@ class Delegation
      * @var integer
      *
      * @ORM\Column(name="id_gouvernorat", type="integer", nullable=false)
-     * @ORM\ManyToOne(targetEntity="Gouvernorat", inversedBy="delegations")
+     * @ORM\ManyToOne(targetEntity="Gouvernorat")
      * @ORM\JoinColumn(name="id_gouvernorat", referencedColumnName="id")
      *
-     * @Assert\Type(type="Immobilier\ManagerBundle\Entity\Gouvernorat")
+     *
      */
     private $idGouvernorat;
 

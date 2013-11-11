@@ -32,7 +32,11 @@ class Type
 
     public function __toString()
     {
-        return (string) $this->getId();
+        try {
+            return (string) $this->id;
+        } catch (Exception $exception) {
+            return '';
+        }
     }
 
     /**

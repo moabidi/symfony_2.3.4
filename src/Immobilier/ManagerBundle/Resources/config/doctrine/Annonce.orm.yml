@@ -9,10 +9,11 @@ Immobilier\ManagerBundle\Entity\Annonce:
             nullable: false
             generator:
                 strategy: IDENTITY
-        categpry:
+        idCategory:
             type: integer
             unsigned: false
             nullable: false
+            column: id_category
         nature:
             type: integer
             unsigned: false

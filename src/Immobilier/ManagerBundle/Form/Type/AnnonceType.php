@@ -5,7 +5,9 @@ namespace Immobilier\ManagerBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
+use Immobilier\ManagerBundle\Entity\Pays;
+use Immobilier\ManagerBundle\Entity\Type;
+use Immobilier\ManagerBundle\Entity\Category;
 
 class AnnonceType extends AbstractType
 {
@@ -13,7 +15,11 @@ class AnnonceType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
-        $builder->add(  'categpry', 'entity', array(
+        $builder->add(  'idPays', 'entity', array(
+                        'class'   => 'Immobilier\ManagerBundle\Entity\Pays',
+                        'property'  => 'name',
+                    ))
+                ->add(  'idCategory', 'entity', array(
                         'class'   => 'Immobilier\ManagerBundle\Entity\Category',
                         'property'  => 'name',
                     ))
@@ -21,14 +27,11 @@ class AnnonceType extends AbstractType
                     'class'   => 'Immobilier\ManagerBundle\Entity\Nature',
                     'property'  => 'name',
                     ))
-                /*->add(  'idType', 'entity', array(
+                ->add(  'idType', 'entity', array(
                         'class'   => 'Immobilier\ManagerBundle\Entity\Type',
                         'property'  => 'name',
-                    ))*/
-                ->add(  'idPays', 'entity', array(
-                        'class'   => 'Immobilier\ManagerBundle\Entity\Pays',
-                        'property'  => 'name',
                     ))
+
                 ->add('surface')
                 ->add('prix');
     }

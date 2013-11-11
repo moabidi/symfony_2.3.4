@@ -265,9 +265,17 @@ class DefaultController extends Controller
         $form->handleRequest($request);
         if( $form->isValid() )
         { // perform some action, such as saving the task to the database
-             $this->persistAndFlush($annonce);
-             return new Response('ok');
-         }else{
+
+
+            echo  $id = $annonce->getIdType();
+            $type = $this->getDoctrine()
+                ->getRepository('ImmobilierManagerBundle:Type')
+                ->find($id);
+            echo $type;
+            $this->persistAndFlush($annonce);
+            return new Response('ok');
+
+        }else{
              return $this->render('ImmobilierManagerBundle:Default:new_annonce.html.twig', array(
                          'form' => $form->createView(),
                      ));
