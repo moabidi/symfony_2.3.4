@@ -1,0 +1,4 @@
+immobilier_manager:
+    resource: "@ImmobilierManagerBundle/Resources/config/routing.yml"
+    prefix:   /
+

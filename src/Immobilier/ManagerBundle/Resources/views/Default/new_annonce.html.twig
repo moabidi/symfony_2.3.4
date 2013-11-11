@@ -1,0 +1,17 @@
+{# src/Acme/TaskBundle/Resources/views/Default/new_gov.html.twig #}
+
+{#{ form(form) }#}
+<h2>Creer un nouveau annonce</h2>
+{{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.categpry) }}
+        {#{ form_row(form.idType) }#}
+        {{ form_row(form.nature) }}
+        {{ form_row(form.surface) }}
+        {{ form_row(form.prix) }}
+        {{ form_row(form.idPays) }}
+
+        {{ form_rest(form) }}
+        <input type="submit" value="Send" class="symfony-button-grey" />
+{{ form_end(form) }}
