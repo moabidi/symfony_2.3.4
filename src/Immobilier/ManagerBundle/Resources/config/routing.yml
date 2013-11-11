@@ -1,0 +1,49 @@
+immobilier_manager_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ImmobilierManagerBundle:Default:index }
+immobilier_manager_createPays:
+    pattern:  /create/pays
+    defaults: { _controller: ImmobilierManagerBundle:Default:createPays }
+immobilier_manager_createSynchroPays:
+    pattern:  /create/synchro/pays/{namePays}
+    defaults: { _controller: ImmobilierManagerBundle:Default:createSynchroPays }
+immobilier_manager_showPays:
+    pattern: /show/pays/{id}
+    defaults: { _controller: ImmobilierManagerBundle:Default:showPays }
+######User root###########
+immobilier_manager_createUser:
+    pattern:  /create/user
+    defaults: { _controller: ImmobilierManagerBundle:User:createUser }
+immobilier_manager_createUserForm:
+    pattern:  /create/user_form
+    defaults: { _controller: ImmobilierManagerBundle:User:createUserForm }
+immobilier_manager_createSynchroUser:
+    pattern:  /create/synchro/user/{login}/{passwd}/{email}
+    defaults: { _controller: ImmobilierManagerBundle:User:createSynchroUser }
+immobilier_manager_showUser:
+    pattern: /show/user/{id}
+    defaults: { _controller: ImmobilierManagerBundle:User:showUser }
+######Gov root###########
+immobilier_manager_createGov:
+    pattern:  /create/gov
+    defaults: { _controller: ImmobilierManagerBundle:Default:createGov }
+######Del root###########
+immobilier_manager_createDel:
+    pattern:  /create/del
+    defaults: { _controller: ImmobilierManagerBundle:Default:createDel }
+######Type root###########
+immobilier_manager_createType:
+    pattern:  /create/type
+    defaults: { _controller: ImmobilierManagerBundle:Default:createType }
+######Annonce root###########
+immobilier_manager_createNature:
+    pattern:  /create/nature
+    defaults: { _controller: ImmobilierManagerBundle:Default:createNature }
+######Category root###########
+immobilier_manager_createCategory:
+    pattern:  /create/category
+    defaults: { _controller: ImmobilierManagerBundle:Default:createCategory }
+######Annonce root###########
+immobilier_manager_createAnnonce:
+    pattern:  /create/annonce
+    defaults: { _controller: ImmobilierManagerBundle:Default:createAnnonce }

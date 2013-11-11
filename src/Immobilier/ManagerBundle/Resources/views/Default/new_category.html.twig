@@ -1,0 +1,13 @@
+{# src/Acme/TaskBundle/Resources/views/Default/new_gov.html.twig #}
+
+{#{ form(form) }#}
+<h2>Creer une nouvelle Delegation</h2>
+{# <form action="{{ path('immobilier_manager_createCategory') }}" method="POST" id="category_form"> #}
+{{  form_start(form)}}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.name) }}
+
+    {{ form_rest(form) }}
+    <input type="submit" value="Send" class="symfony-button-grey" />
+{{ form_end(form) }}

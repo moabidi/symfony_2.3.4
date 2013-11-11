@@ -1,0 +1,27 @@
+Immobilier\ManagerBundle\Entity\User:
+    type: entity
+    table: user
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        login:
+            type: string
+            length: 200
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 500
+            fixed: false
+            nullable: false
+        email:
+            type: string
+            length: 200
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

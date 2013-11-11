@@ -1,0 +1,59 @@
+Immobilier\ManagerBundle\Entity\Annonce:
+    type: entity
+    table: annonce
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        categpry:
+            type: integer
+            unsigned: false
+            nullable: false
+        nature:
+            type: integer
+            unsigned: false
+            nullable: false
+        idType:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_type
+        photo:
+            type: integer
+            unsigned: false
+            nullable: false
+        surface:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        prix:
+            type: integer
+            unsigned: false
+            nullable: false
+        idPays:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_pays
+        gouvernorat:
+            type: integer
+            unsigned: false
+            nullable: false
+        delegation:
+            type: integer
+            unsigned: false
+            nullable: false
+        localite:
+            type: integer
+            unsigned: false
+            nullable: false
+        user:
+            type: integer
+            unsigned: false
+            nullable: false
+    lifecycleCallbacks: {  }
