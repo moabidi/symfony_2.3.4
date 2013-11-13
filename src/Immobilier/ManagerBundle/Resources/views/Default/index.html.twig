@@ -1,1 +1,90 @@
-Hello {{ name }}!
+{% extends 'ImmobilierManagerBundle::layout.html.twig' %}
+
+
+{%  block content %}
+    <!-- CONTENT -->
+    <div id="content">
+        <div class="map-wrapper">
+            <div class="map">
+                <div id="map" class="map-inner"></div><!-- /.map-inner -->
+                {% include 'ImmobilierManagerBundle:_common:filter.html.twig' %}
+            </div><!-- /.map -->
+        </div><!-- /.map-wrapper -->
+        <div class="container">
+            <div id="main">
+                <div class="row">
+                    <div class="span9">
+                        <h1 class="page-header">Featured properties</h1>
+                        <div class="properties-grid">
+                            <div class="row">
+                                {% for i in 1..6 %}
+                                    {% include 'ImmobilierManagerBundle:Line:article.html.twig' %}
+                                {% endfor %}
+                            </div><!-- /.row -->
+                        </div><!-- /.properties-grid -->
+                    </div>
+                    {% block sidebar %}
+                        {% include 'ImmobilierManagerBundle:_common:sidebar.html.twig' %}
+                    {% endblock %}
+                </div>
+                <div class="carousel">
+                    <h2 class="page-header">All properties</h2>
+
+                    <div class="content">
+                        <a class="carousel-prev" href="detail.html">Previous</a>
+                        <a class="carousel-next" href="detail.html">Next</a>
+                        <ul>
+                            {% for i in 1..10 %}
+                                {% include 'ImmobilierManagerBundle:Line:property.html.twig' %}
+                            {% endfor %}
+                        </ul>
+                    </div><!-- /.content -->
+                </div><!-- /.carousel -->
+                <div class="features">
+                    <h2 class="page-header">Theme features</h2>
+
+                    {% block listnews %}
+                        <div class="row">
+                            {% for i in 1..3 %}
+                                {% include 'ImmobilierManagerBundle:Line:news.html.twig' %}
+                            {% endfor %}
+                        </div><!-- /.row -->
+                        <div class="row">
+                            {% for i in 1..3 %}
+                                {% include 'ImmobilierManagerBundle:Line:news.html.twig' %}
+                            {% endfor %}
+                        </div><!-- /.row -->
+                    {% endblock %}
+                </div><!-- /.features -->
+            </div>
+        </div>
+        {% block readmore %}
+            <div class="bottom-wrapper">
+                <div class="bottom container">
+                    <div class="bottom-inner row">
+                        <div class="item span4">
+                            <div class="address decoration"></div>
+                            <h2><a>List your property</a></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan dui ac nunc imperdiet rhoncus. Aenean vitae imperdiet lectus</p>
+                            <a href="#" class="btn btn-primary">Read more</a>
+                        </div><!-- /.item -->
+
+                        <div class="item span4">
+                            <div class="gps decoration"></div>
+                            <h2><a>Advertise rentals</a></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan dui ac nunc imperdiet rhoncus. Aenean vitae imperdiet lectus</p>
+                            <a href="#" class="btn btn-primary">Read more</a>
+                        </div><!-- /.item -->
+
+                        <div class="item span4">
+                            <div class="key decoration"></div>
+                            <h2><a>Guidance</a></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan dui ac nunc imperdiet rhoncus. Aenean vitae imperdiet lectus</p>
+                            <a href="#" class="btn btn-primary">Read more</a>
+                        </div><!-- /.item -->
+                    </div><!-- /.bottom-inner -->
+                </div><!-- /.bottom -->
+            </div><!-- /.bottom-wrapper -->
+        {% endblock %}
+    </div><!-- /#content -->
+{% endblock %}
