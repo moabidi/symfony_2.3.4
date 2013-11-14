@@ -30,10 +30,10 @@ class DefaultController extends Controller
         $em->flush();
     }
 
-    public function indexAction($name)
+    public function indexAction()
     {
 
-        return $this->render('ImmobilierManagerBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('ImmobilierManagerBundle:Default:index.html.twig');
     }
 
 /***************** Pays **********************/
@@ -280,5 +280,25 @@ class DefaultController extends Controller
                          'form' => $form->createView(),
                      ));
          }
+    }
+    /*********************** Show Annonce *******************************/
+    public function showAnnonceAction($id)
+    {
+        $annonce  = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->find($id);
+        if( !$annonce )
+            throw $this->createNotFoundException(
+                'Annonce not exist with id : '.$id
+            );
+        return $this->render('ImmobilierManagerBundle:Default:show_annonce.html.twig',
+                              array('annonce' => $annonce));
+    }
+
+    /*********************** List Annonces *******************************/
+    public function listAnnoncesAction()
+    {
+        $listAnnonces = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->findAll();
+        return $this->render(   'ImmobilierManagerBundle:Default:list_annonces.html.twig',
+                                array('list_annonces'=>$listAnnonces)
+                            );
     }
 }

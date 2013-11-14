@@ -1,5 +1,5 @@
 immobilier_manager_homepage:
-    pattern:  /hello/{name}
+    pattern:  /home
     defaults: { _controller: ImmobilierManagerBundle:Default:index }
 immobilier_manager_createPays:
     pattern:  /create/pays
@@ -47,3 +47,11 @@ immobilier_manager_createCategory:
 immobilier_manager_createAnnonce:
     pattern:  /create/annonce
     defaults: { _controller: ImmobilierManagerBundle:Default:createAnnonce }
+######ShowAnnonce root###########
+immobilier_manager_showAnnonce:
+    pattern:  /show/annonce/{id}
+    defaults: { _controller: ImmobilierManagerBundle:Default:showAnnonce }
+######ListAnnonce root###########
+immobilier_manager_listAnnonces:
+    pattern:  /list/annonces
+    defaults: { _controller: ImmobilierManagerBundle:Default:listAnnonces }

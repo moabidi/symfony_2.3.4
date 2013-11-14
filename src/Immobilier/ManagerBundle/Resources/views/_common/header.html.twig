@@ -9,7 +9,7 @@
                                 <a href="#nav" class="hidden-desktop" id="btn-nav">Toggle navigation</a>
 
                                 <div class="logo">
-                                    <a href="index.html" title="Home">
+                                    <a href="{{ path('immobilier_manager_homepage') }}" title="Home">
                                         <img src="{{ asset('bundles/immobiliermanager/images/logo.png') }}" alt="Home">
                                     </a>
                                 </div><!-- /.logo -->
@@ -33,7 +33,7 @@
                                 </div><!-- /.site-phone -->
                             </div><!-- /.info -->
 
-                            <a class="btn btn-primary btn-large list-your-property arrow-right" href="list-your-property.html">List your property</a>
+                            <a class="btn btn-primary btn-large list-your-property arrow-right" href="{{ path('immobilier_manager_createAnnonce') }}">List your property</a>
                         </div><!-- /.row -->
                     </div><!-- /.navbar-inner -->
                 </div><!-- /.navbar -->

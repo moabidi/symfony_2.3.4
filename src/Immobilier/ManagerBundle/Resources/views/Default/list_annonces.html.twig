@@ -1,0 +1,73 @@
+{% extends 'ImmobilierManagerBundle::layout.html.twig' %}
+
+{% block content %}
+<!-- CONTENT -->
+<div id="content">
+    <div class="container">
+        <div id="main">
+            <div class="row">
+                <div class="span9">
+                    <h1 class="page-header">Listing rows with filter</h1>
+
+                    <div class="properties-rows">
+                        <div class="filter">
+                            <form action="?" method="get" class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputSortBy">
+                                        Sort by
+                                        <span class="form-required" title="This field is required.">*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <select id="inputSortBy">
+                                            <option id="price">Price</option>
+                                            <option id="published">Published</option>
+                                        </select>
+                                    </div><!-- /.controls -->
+                                </div><!-- /.control-group -->
+
+                                <div class="control-group">
+                                    <label class="control-label" for="inputOrder">
+                                        Order
+                                        <span class="form-required" title="This field is required.">*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <select id="inputOrder">
+                                            <option id="asc">ASC</option>
+                                            <option id="desc">DESC</option>
+                                        </select>
+                                    </div><!-- /.controls -->
+                                </div><!-- /.control-group -->
+                            </form>
+                        </div><!-- /.filter -->
+                    </div><!-- /.properties-rows -->
+                    <div class="properties-rows">
+                        <div class="row">
+                          {% set image = 'bundles/immobiliermanager/images/tmp/property-small-1.png' %}
+                          {%  for i in 1..4 %}
+                                {% set image = 'bundles/immobiliermanager/images/tmp/property-small-'~i~'.png' %}
+                                {% include 'ImmobilierManagerBundle:Line:annonce.html.twig' with {'image':image} %}
+                          {%  endfor %}
+                        </div><!-- /.row -->
+                    </div><!-- /.properties-rows -->
+                    <div class="pagination pagination-centered">
+                        <ul>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li class="active"><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">next</a></li>
+                            <li><a href="#">last</a></li>
+                        </ul>
+                    </div><!-- /.pagination -->
+                </div>
+                <div class="sidebar span3">
+                    <h2>Property filter</h2>
+                        {% include 'ImmobilierManagerBundle:_common:filter.html.twig' %}
+                        {% include 'ImmobilierManagerBundle:_common:last-agents.html.twig' %}
+                        {% include 'ImmobilierManagerBundle:_common:advertissement.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /#content -->
+{% endblock %}
