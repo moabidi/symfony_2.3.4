@@ -14,4 +14,9 @@ Immobilier\ManagerBundle\Entity\Photo:
             length: 100
             fixed: false
             nullable: false
+        idAnnonce:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: id_annonce
     lifecycleCallbacks: {  }

@@ -16,6 +16,7 @@ use Immobilier\ManagerBundle\Entity\Category;
 use Immobilier\ManagerBundle\Form\Type\CategoryType;
 use Immobilier\ManagerBundle\Entity\Annonce;
 use Immobilier\ManagerBundle\Form\Type\AnnonceType;
+use Immobilier\ManagerBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -255,6 +256,25 @@ class DefaultController extends Controller
     /***********************  Annonce *************************/
     public function createAnnonceAction(Request $request)
     {
+        // obtenir respectivement des variables GET et POST
+        //$request->query->get('foo');
+        //$request->request->get('bar', 'valeur par défaut si bar est inexistant');
+
+        // obtenir les variables SERVER
+        //$request->server->get('HTTP_HOST');
+
+        // obtenir une instance de UploadedFile identifiée par foo
+        //$request->files->get('foo');
+
+        // obtenir la valeur d'un COOKIE value
+        //equest->cookies->get('PHPSESSID');
+
+        // obtenir un entête de requête HTTP request header, normalisé en minuscules
+        //$request->headers->get('host');
+        //$request->headers->get('content_type');
+
+        //$request->getMethod();          // GET, POST, PUT, DELETE, HEAD
+        //$request->getLanguages();       // un tableau des langues que le client accepte
         $annonce = new Annonce();
         $form   = $this->createForm( new AnnonceType,
                                      $annonce,
@@ -262,23 +282,29 @@ class DefaultController extends Controller
                                             'method' => 'POST'
                                            )
                                     );
+        //var_dump($request->request->get('name'));
+        //var_dump($request->request->get('annonce'));
+        //die();
         $form->handleRequest($request);
         if( $form->isValid() )
         { // perform some action, such as saving the task to the database
 
 
-            echo  $id = $annonce->getIdType();
-            $type = $this->getDoctrine()
-                ->getRepository('ImmobilierManagerBundle:Type')
-                ->find($id);
-            echo $type;
+            $user = new User();
+            $user->setLogin($request->request->get('name'));
+            $user->setEmail($request->request->get('email'));
+            $this->persistAndFlush($user);
+            $idUser = $user->getId();
+            $annonce->setUser($idUser);
             $this->persistAndFlush($annonce);
-            return new Response('ok');
+            return $this->redirect($this->generateUrl(  'immobilier_manager_showAnnonce',
+                                                        array('id' => $annonce->getId())
+                                                    ));
 
         }else{
-             return $this->render('ImmobilierManagerBundle:Default:new_annonce.html.twig', array(
-                         'form' => $form->createView(),
-                     ));
+             return $this->render(  'ImmobilierManagerBundle:Default:new_annonce.html.twig',
+                                    array('form' => $form->createView())
+                                );
          }
     }
     /*********************** Show Annonce *******************************/
@@ -290,7 +316,8 @@ class DefaultController extends Controller
                 'Annonce not exist with id : '.$id
             );
         return $this->render('ImmobilierManagerBundle:Default:show_annonce.html.twig',
-                              array('annonce' => $annonce));
+                              array('annonce' => $annonce)
+                            );
     }
 
     /*********************** List Annonces *******************************/

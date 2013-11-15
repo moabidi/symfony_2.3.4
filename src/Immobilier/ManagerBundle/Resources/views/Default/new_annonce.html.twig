@@ -18,7 +18,7 @@
                             </div><!-- /.span8 -->
                         </div><!-- /.row -->
 
-                        <form method="post" action="/sample" enctype="multipart/form-data">
+                        <form method="post" action="" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="span4">
                                     <h3><strong>1.</strong> <span>Personal info</span></h3>
@@ -29,14 +29,14 @@
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <input type="text" id="inputPropertyFirstName">
+                                            <input type="text" name="name" id="inputPropertyFirstName">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
 
                                     <div class="control-group">
                                         <label class="control-label" for="inputPropertySurname">
                                             Surname
-                                            <span class="form-required" title="This field is required.">*</span>
+                                            <span class="form-required" name="prenom" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
                                             <input type="text" id="inputPropertySurname">
@@ -49,7 +49,7 @@
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <input type="text" id="inputPropertyEmail">
+                                            <input type="text" name="email" id="inputPropertyEmail">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
 
@@ -59,7 +59,7 @@
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <input type="text" id="inputPropertyPhone">
+                                            <input type="text" name="tel" id="inputPropertyPhone">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->
@@ -67,33 +67,41 @@
                                 <div class="span4">
                                     <h3><strong>2.</strong> <span>Property info</span></h3>
 
-                                    <div class="control-group">
-                                        <label class="control-label" for="inputPropertyLocation">
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idPays.vars.id }}">
                                             Location
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            {{ form_widget(form.idPays,{'attr':{'id':'inputPropertyLocation','class':'test' }}) }}
+                                            {{ form_widget(form.idPays,{'attr':{'class':'test' }}) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
-
-                                    <div class="property-type control-group">
-                                        <label class="control-label" for="inputPropertyPropertyType">
-                                            Property type
+                                    <div class="contract-type control-group">
+                                        <label class="control-label" for="{{ form.idCategory.vars.id }}">
+                                            Category
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                           {{ form_widget(form.idType,{'attr':{'id':'inputPropertyPropertyType'}}) }}
+                                            {{ form_widget(form.idCategory) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idType.vars.id }}">
+                                            Type
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                           {{ form_widget(form.idType) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
 
                                     <div class="contract-type control-group">
-                                        <label class="control-label" for="inputPropertyContractType">
-                                            Contract type
+                                        <label class="control-label" for="{{ form.nature.vars.id }}">
+                                            Nature
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            {{ form_widget(form.nature,{'attr':{'id':'inputPropertyContractType'}}) }}
+                                            {{ form_widget(form.nature) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
 
@@ -118,17 +126,17 @@
                                     </div><!-- /.control-group -->
 
                                     <div class="area control-group">
-                                        <label class="control-label" for="inputPropertyArea">
+                                        <label class="control-label" for="{{ form.surface.vars.id }}">
                                             Area
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            {{  form_widget(form.surface,{'attr':{'id':'inputPropertyArea'}} ) }}
+                                            {{  form_widget(form.surface ) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
 
                                     <div class="price control-group">
-                                        <label class="control-label" for="inputPropertyPrice">
+                                        <label class="control-label" for="{{ form.prix.vars.id }}">
                                             Price
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
@@ -151,22 +159,33 @@
                                                 <i class="icon-file fileupload-exists"></i>
                                                 <span class="fileupload-preview"></span>
                                             </div>
-                                                                <span class="btn btn-file">
-                                                                    <span class="fileupload-new">Select file</span>
-                                                                    <span class="fileupload-exists">Change</span>
-                                                                    <input type="file" />
-                                                                </span>
+                                            <span class="btn btn-file">
+                                                <span class="fileupload-new">Select file</span>
+                                                <span class="fileupload-exists">Change</span>
+                                                <input type="file" />
+                                            </span>
                                             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div><!-- /.input-append -->
                                     </div><!-- .fileupload -->
 
                                     <div class="control-group">
-                                        <label class="control-label" for="inputPropertyNotes">
+                                        <label class="control-label" for="{{ form.description.vars.id }}">
                                             Your notes
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <textarea id="inputPropertyNotes"></textarea>
+                                            {#<textarea id="inputPropertyNotes"></textarea>#}
+                                            {{ form_widget(form.description ) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            {{ form_widget(form._token) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <input  class="btn btn-primary arrow-right" type="submit" value="send">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->

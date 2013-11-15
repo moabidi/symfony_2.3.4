@@ -33,7 +33,8 @@ class AnnonceType extends AbstractType
                     ))
 
                 ->add('surface')
-                ->add('prix');
+                ->add('prix')
+                ->add('description','textarea');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

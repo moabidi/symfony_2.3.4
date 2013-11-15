@@ -78,6 +78,13 @@ class Annonce
     /**
      * @var integer
      *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="id_pays", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="Pays", inversedBy="annonces")
      * @ORM\JoinColumn(name="id_pays", referencedColumnName="id")
@@ -272,26 +279,49 @@ class Annonce
     }
 
     /**
-     * Set prix
-     *
-     * @param integer $prix
-     * @return Annonce
-     */
+ * Set prix
+ *
+ * @param integer $prix
+ * @return Annonce
+ */
     public function setPrix($prix)
     {
         $this->prix = $prix;
-    
+
         return $this;
     }
 
     /**
      * Get prix
      *
-     * @return integer 
+     * @return integer
      */
     public function getPrix()
     {
         return $this->prix;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Annonce
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

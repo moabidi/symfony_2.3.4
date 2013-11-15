@@ -28,6 +28,17 @@ class Photo
      */
     private $name;
 
+    /**
+     *@var integer
+     *
+     * @ORM\Column(name="idAnnonce", type="integer", nullable="true")
+     */
+    private $idAnnonce;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
     /**
@@ -61,5 +72,23 @@ class Photo
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get idAnnonce
+     * @return integer
+     */
+    public function getIdAnnonce()
+    {
+        return $this->idAnnonce;
+    }
+
+    /**
+     * Set idAnnonce
+     * @return Photo
+    */
+    public function setIdAnnonce($idAnnonce){
+        $this->idAnnonce = $idAnnonce;
+        return $this;
     }
 }

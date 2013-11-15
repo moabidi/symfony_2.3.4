@@ -18,6 +18,7 @@ Immobilier\ManagerBundle\Entity\Annonce:
             type: integer
             unsigned: false
             nullable: false
+            column: nature
         idType:
             type: integer
             unsigned: false
@@ -35,6 +36,11 @@ Immobilier\ManagerBundle\Entity\Annonce:
         prix:
             type: integer
             unsigned: false
+            nullable: false
+        description:
+            type: string
+            length: 255
+            fixed: false
             nullable: false
         idPays:
             type: integer
