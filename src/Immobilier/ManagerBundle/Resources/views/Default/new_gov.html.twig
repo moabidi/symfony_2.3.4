@@ -1,7 +1,7 @@
 {# src/Acme/TaskBundle/Resources/views/Default/new_gov.html.twig #}
 
 {#{ form(form) }#}
-<form action="{{ path('immobilier_manager_createGov') }}" method="POST" id="contact_form">
+{# <form action="{{ path('immobilier_manager_createGov') }}" method="POST" id="contact_form">
         {{ form_errors(form) }}
 
         {{ form_row(form.name) }}
@@ -9,4 +9,13 @@
 
         {{ form_rest(form) }}
         <input type="submit" value="Send" class="symfony-button-grey" />
-    </form>
+</form>
+#}
+
+<h1>Upload File</h1>
+
+<form action="#" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" value="Upload Document" />
+</form>

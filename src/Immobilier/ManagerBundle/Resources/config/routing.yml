@@ -10,6 +10,10 @@ immobilier_manager_createSynchroPays:
 immobilier_manager_showPays:
     pattern: /show/pays/{id}
     defaults: { _controller: ImmobilierManagerBundle:Default:showPays }
+######Photo root###########
+immobilier_manager_createPhoto:
+    pattern:  /create/photo/{namePhoto}
+    defaults: { _controller: ImmobilierManagerBundle:Default:createPhoto }
 ######User root###########
 immobilier_manager_createUser:
     pattern:  /create/user
