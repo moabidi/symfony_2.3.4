@@ -14,6 +14,11 @@ Immobilier\ManagerBundle\Entity\Photo:
             length: 100
             fixed: false
             nullable: false
+        path:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
         idAnnonce:
             type: integer
             unsigned: false

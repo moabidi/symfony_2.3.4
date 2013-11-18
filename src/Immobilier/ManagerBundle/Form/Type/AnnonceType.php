@@ -5,6 +5,7 @@ namespace Immobilier\ManagerBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Oh\GoogleMapFormTypeBundle\Form\Type\GoogleMapType;
 use Immobilier\ManagerBundle\Entity\Pays;
 use Immobilier\ManagerBundle\Entity\Type;
 use Immobilier\ManagerBundle\Entity\Category;
@@ -34,7 +35,8 @@ class AnnonceType extends AbstractType
 
                 ->add('surface')
                 ->add('prix')
-                ->add('description','textarea');
+                ->add('description','textarea')
+                ->add('latlng', 'oh_google_maps');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

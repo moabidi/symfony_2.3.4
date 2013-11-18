@@ -4,6 +4,7 @@ namespace Immobilier\ManagerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
 use Immobilier\ManagerBundle\Entity\Pays;
 use Immobilier\ManagerBundle\Entity\Type;
 
@@ -76,7 +77,7 @@ class Annonce
     private $prix;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
@@ -127,7 +128,8 @@ class Annonce
      * @ORM\JoinColumn(name="user", referencedColumnName="name")
      */
     private $user;
-
+    private $lng;
+    private $lat;
 
 
     /**
@@ -437,5 +439,67 @@ class Annonce
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set lng
+     *
+     * @param integer $lng
+     * @return Annonce
+     */
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
+
+        return $this;
+    }
+
+    /**
+     * Get lng
+     *
+     * @return integer
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * Set lat
+     *
+     * @param integer $lat
+     * @return Annonce
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lng;
+
+        return $this;
+    }
+
+    /**
+     * Get lng
+     *
+     * @return integer
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    public function setLatLng($latlng)
+    {
+        $this->setLat($latlng['lat']);
+        $this->setLng($latlng['lng']);
+        return $this;
+    }
+
+    /**
+     * @Assert\NotBlank()
+     * @OhAssert\LatLng()
+     */
+    public function getLatLng()
+    {
+        return array('lat'=>$this->getLat(),'lng'=>$this->getLng());
     }
 }

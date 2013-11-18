@@ -63,10 +63,17 @@
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->
-
                                 <div class="span4">
                                     <h3><strong>2.</strong> <span>Property info</span></h3>
-
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputTitle">
+                                            Title
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" name="title" id="inputTitle">
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
                                     <div class="property-type control-group">
                                         <label class="control-label" for="{{ form.idPays.vars.id }}">
                                             Location
@@ -104,27 +111,6 @@
                                             {{ form_widget(form.nature) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
-
-                                    <div class="bedrooms control-group">
-                                        <label class="control-label" for="inputPropertyBedrooms">
-                                            Bedrooms
-                                            <span class="form-required" title="This field is required.">*</span>
-                                        </label>
-                                        <div class="controls">
-                                            <input type="text" id="inputPropertyBedrooms">
-                                        </div><!-- /.controls -->
-                                    </div><!-- /.control-group -->
-
-                                    <div class="bathrooms control-group">
-                                        <label class="control-label" for="inputPropertyBathrooms">
-                                            Bathrooms
-                                            <span class="form-required" title="This field is required.">*</span>
-                                        </label>
-                                        <div class="controls">
-                                            <input type="text" id="inputPropertyBathrooms">
-                                        </div><!-- /.controls -->
-                                    </div><!-- /.control-group -->
-
                                     <div class="area control-group">
                                         <label class="control-label" for="{{ form.surface.vars.id }}">
                                             Area
@@ -145,7 +131,26 @@
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->
-
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h3><strong>4.</strong> <span>Location of the property</span></h3>
+                                    <div class="control-group">
+                                        <label class="control-label" for="{{ form.latlng.vars.id }}">
+                                            Your location in the map
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {#<textarea id="inputPropertyNotes"></textarea>#}
+                                            {{ form_widget(form.latlng ) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            {{ form_widget(form._token) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                </div><!-- /.span4 -->
                                 <div class="span4">
                                     <h3><strong>3.</strong> <span>Image upload</span></h3>
 
@@ -180,11 +185,6 @@
                                     </div><!-- /.control-group -->
                                     <div class="control-group">
                                         <div class="controls">
-                                            {{ form_widget(form._token) }}
-                                        </div><!-- /.controls -->
-                                    </div><!-- /.control-group -->
-                                    <div class="control-group">
-                                        <div class="controls">
                                             <input  class="btn btn-primary arrow-right" type="submit" value="send">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
@@ -215,4 +215,11 @@
         #}
 
 
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/ohgooglemapformtype/js/jquery.ohgooglemaps.js') }}"></script>
+    {# javascripts '@OhGoogleMapFormTypeBundle/Resources/public/js/jquery.ohgooglemaps.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts #}
 {% endblock %}

@@ -17,6 +17,7 @@ use Immobilier\ManagerBundle\Form\Type\CategoryType;
 use Immobilier\ManagerBundle\Entity\Annonce;
 use Immobilier\ManagerBundle\Form\Type\AnnonceType;
 use Immobilier\ManagerBundle\Entity\User;
+use Immobilier\ManagerBundle\Entity\Photo;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -74,14 +75,35 @@ class DefaultController extends Controller
         return new Response('Pays dont id '.$id.' is '.$pays->getName());
     }
     /***********************  Photo *************************/
-    public function createSynchroPhotoAction($namePhoto)
+    public function createPhotoAction($namePhoto)
     {
 
-        $photo = new Photo();
-        $photo->setName($namePhoto);
-        $this->persistAndFlush($photo);
 
-        return new Response('Created photo id '.$photo->getId());
+        //$photo = new Photo();
+        $document = new Photo();
+        $form = $this->createFormBuilder($document)
+            ->add('name')
+            ->add('file')
+            ->getForm()
+        ;
+        echo '<pre>';
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                //$document->upload();
+                var_dump($document);
+
+                $em->persist($document);
+                $em->flush();
+                return new Response('ok');
+                //$this->redirect($this->generateUrl(...));
+        }
+        }
+
+        return $this->render('ImmobilierManagerBundle:Default:new_gov.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function showPhotoAction($id)
@@ -275,6 +297,9 @@ class DefaultController extends Controller
 
         //$request->getMethod();          // GET, POST, PUT, DELETE, HEAD
         //$request->getLanguages();       // un tableau des langues que le client accepte
+        var_dump(__DIR__.'/../../../../web/');
+
+
         $annonce = new Annonce();
         $form   = $this->createForm( new AnnonceType,
                                      $annonce,
