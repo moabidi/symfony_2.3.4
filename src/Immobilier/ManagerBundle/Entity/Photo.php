@@ -27,14 +27,7 @@ class Photo
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=100, nullable=false)
-     */
-    private $name;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
      */
     public $path;
 
@@ -52,12 +45,9 @@ class Photo
 
     private $temp;
 
-    // propriété utilisé temporairement pour la suppression
-    private $filenameForRemove;
-
     public function __toString()
     {
-        return $this->name;
+        return (string) $this->id;
     }
 
 
@@ -69,29 +59,6 @@ class Photo
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Photo
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -159,21 +126,14 @@ class Photo
         return 'uploads/images';
     }
 
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
     public function preUpload()
     {
+        echo "preupload";
         if (null !== $this->getFile()) {
             $this->path = $this->getFile()->guessExtension();
         }
     }
 
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
     public function upload()
     {echo "upload";
         if (null === $this->getFile()) {
@@ -188,9 +148,6 @@ class Photo
             $this->temp = null;
         }
 
-        // you must throw an exception here if the file cannot be moved
-        // so that the entity is not persisted to the database
-        // which the UploadedFile move() method does
         $this->getFile()->move(
             $this->getUploadRootDir(),
             $this->id.'.'.$this->getFile()->guessExtension()
@@ -199,17 +156,11 @@ class Photo
         $this->setFile(null);
     }
 
-    /**
-     * @ORM\PreRemove()
-     */
     public function storeFilenameForRemove()
     {
         $this->temp = $this->getAbsolutePath();
     }
 
-    /**
-     * @ORM\PostRemove()
-     */
     public function removeUpload()
     {
         if (isset($this->temp)) {

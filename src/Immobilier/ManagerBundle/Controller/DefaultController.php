@@ -21,7 +21,6 @@ use Immobilier\ManagerBundle\Entity\Photo;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class DefaultController extends Controller
 {
 
@@ -82,7 +81,6 @@ class DefaultController extends Controller
         //$photo = new Photo();
         $document = new Photo();
         $form = $this->createFormBuilder($document)
-            ->add('name')
             ->add('file')
             ->getForm()
         ;
@@ -307,10 +305,16 @@ class DefaultController extends Controller
                                             'method' => 'POST'
                                            )
                                     );
+        $photo = new Photo();
+        $form_photo = $this->createFormBuilder($photo)
+            ->add('file')
+            ->getForm()
+        ;
         //var_dump($request->request->get('name'));
         //var_dump($request->request->get('annonce'));
         //die();
         $form->handleRequest($request);
+        $form_photo->handleRequest($request);
         if( $form->isValid() )
         { // perform some action, such as saving the task to the database
 
@@ -328,7 +332,9 @@ class DefaultController extends Controller
 
         }else{
              return $this->render(  'ImmobilierManagerBundle:Default:new_annonce.html.twig',
-                                    array('form' => $form->createView())
+                                    array(  'form' => $form->createView(),
+                                            //'form_photo' => $form_photo->createView()
+                                    )
                                 );
          }
     }

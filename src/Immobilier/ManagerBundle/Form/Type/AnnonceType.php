@@ -32,7 +32,17 @@ class AnnonceType extends AbstractType
                         'class'   => 'Immobilier\ManagerBundle\Entity\Type',
                         'property'  => 'name',
                     ))
+                ->add(  'photos', 'collection', array(
+                        // each item in the array will be an "email" field
+                        'type'   => 'file',
+                        // these options are passed to each "email" type
+                        'options'  => array(
+                            'required'  => false,
+                            'attr'      => array('class' => 'file-box')
 
+                        ),
+                        'allow_add' => true
+                    ))
                 ->add('surface')
                 ->add('prix')
                 ->add('description','textarea')
