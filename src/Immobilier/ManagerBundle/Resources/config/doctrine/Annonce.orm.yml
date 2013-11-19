@@ -9,6 +9,10 @@ Immobilier\ManagerBundle\Entity\Annonce:
             nullable: false
             generator:
                 strategy: IDENTITY
+        title:
+            type: string
+            length: 100
+            nullable: true
         idCategory:
             type: integer
             unsigned: false
@@ -59,4 +63,12 @@ Immobilier\ManagerBundle\Entity\Annonce:
             type: integer
             unsigned: false
             nullable: false
+        lng:
+            type: string
+            length: 20
+            nullable: true
+        lat:
+            type: string
+            length: 20
+            nullable: true
     lifecycleCallbacks: {  }

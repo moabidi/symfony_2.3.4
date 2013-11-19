@@ -29,7 +29,7 @@
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <input type="text" name="name" id="inputPropertyFirstName">
+                                            <input type="text" name="nom" id="inputPropertyFirstName">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
 
@@ -66,12 +66,12 @@
                                 <div class="span4">
                                     <h3><strong>2.</strong> <span>Property info</span></h3>
                                     <div class="control-group">
-                                        <label class="control-label" for="inputTitle">
+                                        <label class="control-label" for="{{ form.title.vars.id }}">
                                             Title
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <input type="text" name="title" id="inputTitle">
+                                            {{ form_widget(form.title) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                     <div class="property-type control-group">

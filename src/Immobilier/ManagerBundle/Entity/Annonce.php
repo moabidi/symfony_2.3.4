@@ -26,6 +26,15 @@ class Annonce
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $title;
+
+
     /**
      * @var integer
      *
@@ -120,7 +129,19 @@ class Annonce
      * @ORM\JoinColumn(name="user", referencedColumnName="name")
      */
     private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lng", type="string", length=20, nullable=false)
+     */
     private $lng;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lat", type="string", length=20, nullable=false)
+     */
     private $lat;
 
     private $photos;
@@ -143,6 +164,28 @@ class Annonce
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Annonce
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
     }
 
     /**
@@ -452,7 +495,7 @@ class Annonce
      */
     public function setLat($lat)
     {
-        $this->lat = $lng;
+        $this->lat = $lat;
 
         return $this;
     }

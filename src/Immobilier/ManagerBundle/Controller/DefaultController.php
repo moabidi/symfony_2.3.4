@@ -303,27 +303,37 @@ class DefaultController extends Controller
                                             'method' => 'POST'
                                            )
                                     );
-        $photo = new Photo();
-        $form_photo = $this->createFormBuilder($photo)
-            ->add('file')
-            ->getForm()
-        ;
-        //var_dump($request->request->get('name'));
+
+        //echo "<pre>";
+        //var_dump($request->files->get('annonce'));
+        //var_dump($request->request->get('nom'));
         //var_dump($request->request->get('annonce'));
         //die();
         $form->handleRequest($request);
-        $form_photo->handleRequest($request);
+
         if( $form->isValid() )
         { // perform some action, such as saving the task to the database
 
-
             $user = new User();
-            $user->setLogin($request->request->get('name'));
+            $user->setLogin($request->request->get('nom'));
             $user->setEmail($request->request->get('email'));
             $this->persistAndFlush($user);
             $idUser = $user->getId();
             $annonce->setUser($idUser);
             $this->persistAndFlush($annonce);
+
+            $aPhotos = $request->files->get('annonce');
+            $nbPhotos = count( $aPhotos['photos']);
+            if( $nbPhotos > 0)
+            {
+                for($i= 0; $i< $nbPhotos;$i++ )
+                {
+                    $photo = new Photo();
+                    $photo->setFile($aPhotos['photos'][$i]);
+                    $photo->setIdAnnonce( $annonce->getId());
+                    $this->persistAndFlush($photo);
+                }
+            }
             return $this->redirect($this->generateUrl(  'immobilier_manager_showAnnonce',
                                                         array('id' => $annonce->getId())
                                                     ));
@@ -339,14 +349,29 @@ class DefaultController extends Controller
     /*********************** Show Annonce *******************************/
     public function showAnnonceAction($id)
     {
-        $annonce  = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->find($id);
+        $annonce    = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->find($id);
         if( !$annonce )
             throw $this->createNotFoundException(
                 'Annonce not exist with id : '.$id
             );
+        $photos     = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Photo')->findBy(array('idAnnonce'=> $id));
+
+        if(count($photos)>0)
+        {
+            $i = 0;
+            $listPhotos = array();
+            while($i<count($photos))
+            {
+             $photo =  $photos[$i];
+             $listPhotos[] =  $photo->getWebPath();
+             $i++;
+            }
+        }
+
         return $this->render('ImmobilierManagerBundle:Default:show_annonce.html.twig',
-                              array('annonce' => $annonce)
-                            );
+                              array('annonce' => $annonce,
+                                    'list_photos' => $listPhotos
+                              ));
     }
 
     /*********************** List Annonces *******************************/
