@@ -2,6 +2,7 @@
 
 namespace Immobilier\ManagerBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
@@ -52,15 +53,6 @@ class Annonce
      * @Assert\Type(type="Immobilier\ManagerBundle\Entity\Type")
      */
     private $idType;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="photo", type="integer", nullable=false)
-     * @ORM\ManyToOne(targetEntity="Photo", inversedBy="annonces")
-     * @ORM\JoinColumn(name="photo", referencedColumnName="name")
-     */
-    private $photo;
 
     /**
      * @var string
@@ -131,6 +123,17 @@ class Annonce
     private $lng;
     private $lat;
 
+    private $photos;
+
+    public function __construct()
+    {
+        $this->photos = new ArrayCollection();
+    }
+
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
 
     /**
      * Get id
@@ -232,29 +235,6 @@ class Annonce
     public function getIdType()
     {
         return $this->idType;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param integer $photo
-     * @return Annonce
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-    
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return integer 
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
     }
 
     /**

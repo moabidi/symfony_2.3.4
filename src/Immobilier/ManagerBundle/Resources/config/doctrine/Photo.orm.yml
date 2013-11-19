@@ -9,11 +9,6 @@ Immobilier\ManagerBundle\Entity\Photo:
             nullable: false
             generator:
                 strategy: IDENTITY
-        name:
-            type: string
-            length: 100
-            fixed: false
-            nullable: false
         path:
             type: string
             length: 255
@@ -24,4 +19,10 @@ Immobilier\ManagerBundle\Entity\Photo:
             unsigned: false
             nullable: true
             column: id_annonce
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [ preUpload ]
+        postPersist: [ upload ]
+        preUpdate: [ preUpload ]
+        postUpdate: [ upload ]
+        preRemove: [ storeFilenameForRemove ]
+        postRemove: [ removeUpload ]

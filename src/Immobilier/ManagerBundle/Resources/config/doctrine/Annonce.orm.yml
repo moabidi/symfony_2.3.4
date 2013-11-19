@@ -24,10 +24,6 @@ Immobilier\ManagerBundle\Entity\Annonce:
             unsigned: false
             nullable: false
             column: id_type
-        photo:
-            type: integer
-            unsigned: false
-            nullable: false
         surface:
             type: string
             length: 50
