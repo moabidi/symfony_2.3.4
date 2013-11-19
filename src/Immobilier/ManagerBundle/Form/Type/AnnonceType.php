@@ -39,7 +39,6 @@ class AnnonceType extends AbstractType
                         'options'  => array(
                             'required'  => false,
                             'attr'      => array('class' => 'file-box')
-
                         ),
                         'allow_add' => true
                     ))

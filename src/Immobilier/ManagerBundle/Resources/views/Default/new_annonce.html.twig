@@ -154,23 +154,11 @@
                                 <div class="span4">
                                     <h3><strong>3.</strong> <span>Image upload</span></h3>
 
-                                    <div class="fileupload fileupload-new control-group" data-provides="fileupload">
+                                    <div class="fileupload control-group">
                                         <label class="control-label" for="inputPropertyPrice">
                                             Image files
                                         </label>
-
-                                        <div class="input-append">
-                                            <div class="uneditable-input">
-                                                <i class="icon-file fileupload-exists"></i>
-                                                <span class="fileupload-preview"></span>
-                                            </div>
-                                            <span class="btn btn-file">
-                                                <span class="fileupload-new">Select file</span>
-                                                <span class="fileupload-exists">Change</span>
-                                                 {{ form_widget(form.photos) }}
-                                            </span>
-                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                        </div><!-- /.input-append -->
+                                        {{ form_widget(form.photos) }}
                                     </div><!-- .fileupload -->
 
                                     <div class="control-group">
@@ -226,15 +214,27 @@
         var $collectionHolder;
 
         // setup an "add a tag" link
-        var $addTagLink = $('<a href="#" class="add_photo_link">Add a tag</a>');
-        var $newLinkLi = $('<div class="controls"></div>').append($addTagLink);
+        var $addTagLink = $('<span class="add_photo_link fileupload-new">Add a file</span>');
+        var $newLinkLi = $('<span class="btn btn-file"></span>').append($addTagLink);
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of tags
+            $('#annonce_photos').attr('data-prototype',
+                    '<div class="uneditable-input">'+
+                            '<i class="icon-file fileupload-exists"></i>'+
+                            '<span class="fileupload-preview"></span>'+
+                            '</div>'+
+                            '<span class="btn btn-file">'+
+                            '<span class="fileupload-new">Select file</span>'+
+                            '<span class="fileupload-exists">Change</span>'+
+                            '<input type="file" id="annonce_photos___name__" name="annonce[photos][__name__]"    class="file-box">'+
+                            '</span>'+
+                            '<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>'
+            );
             $collectionHolder = $('#annonce_photos');
 
             // add the "add a tag" anchor and li to the tags ul
-            $collectionHolder.append($newLinkLi);
+            $collectionHolder.after($newLinkLi);
 
             // count the current form inputs we have (e.g. 2), use that as the new
             // index when inserting a new item (e.g. 2)
@@ -257,13 +257,14 @@
 
             // Replace '__name__' in the prototype's HTML to
             // instead be a number based on how many items we have
+            // var newForm = prototype.replace(/__name__label__/g, 'Image'+index);
             var newForm = prototype.replace(/__name__/g, index);
 
             // increase the index with one for the next item
             $collectionHolder.data('index', index + 1);
 
             // Display the form in the page in an li, before the "Add a tag" link li
-            var $newFormLi = $('<div class="controls"></div>').append(newForm);
+            var $newFormLi = $('<div class="fileupload fileupload-new input-append" data-provides="fileupload"></div>').append(newForm);
             $newLinkLi.before($newFormLi);
         }
     </script>

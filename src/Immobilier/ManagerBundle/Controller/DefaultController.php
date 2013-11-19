@@ -295,8 +295,6 @@ class DefaultController extends Controller
 
         //$request->getMethod();          // GET, POST, PUT, DELETE, HEAD
         //$request->getLanguages();       // un tableau des langues que le client accepte
-        var_dump(__DIR__.'/../../../../web/');
-
 
         $annonce = new Annonce();
         $form   = $this->createForm( new AnnonceType,
