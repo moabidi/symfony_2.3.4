@@ -252,12 +252,14 @@ function InitCarousel() {
 }
 
 function LoadMapProperty() {
+    var lng = $('#lng').val();
+    var lat = $('#lat').val();
     var locations = new Array(
-        [34.01312,-118.496808]
+        [lat ,lng]
     );
     var markers = new Array();
     var mapOptions = {
-        center: new google.maps.LatLng(34.012044, -118.494458),
+        center: new google.maps.LatLng(lat, lng),
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scrollwheel: false

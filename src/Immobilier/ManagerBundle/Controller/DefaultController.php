@@ -355,6 +355,7 @@ class DefaultController extends Controller
                 'Annonce not exist with id : '.$id
             );
         $photos     = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Photo')->findBy(array('idAnnonce'=> $id));
+        $type       = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Type')->findOneBy(array('id'=> $annonce->getIdType()));
 
         if(count($photos)>0)
         {
@@ -370,6 +371,7 @@ class DefaultController extends Controller
 
         return $this->render('ImmobilierManagerBundle:Default:show_annonce.html.twig',
                               array('annonce' => $annonce,
+                                    'type' => $type->getName(),
                                     'list_photos' => $listPhotos
                               ));
     }
