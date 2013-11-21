@@ -34,6 +34,12 @@ class Annonce
      */
     private $title;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_rubrique", type="integer", length=2, nullable=false)
+     */
+    private $idRubrique;
 
     /**
      * @var integer
@@ -97,38 +103,38 @@ class Annonce
     /**
      * @var integer
      *
-     * @ORM\Column(name="gouvernorat", type="integer", nullable=false)
+     * @ORM\Column(name="idGouvernorat", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="Gouvernorat")
-     * @ORM\JoinColumn(name="gouvernorat", referencedColumnName="name")
+     * @ORM\JoinColumn(name="idGouvernorat", referencedColumnName="name")
      */
-    private $gouvernorat;
+    private $idGouvernorat;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="delegation", type="integer", nullable=false)
+     * @ORM\Column(name="idDelegation", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="Delegation")
-     * @ORM\JoinColumn(name="delegation", referencedColumnName="name")
+     * @ORM\JoinColumn(name="idDelegation", referencedColumnName="name")
      */
-    private $delegation;
+    private $idDelegation;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="localite", type="integer", nullable=false)
+     * @ORM\Column(name="idLocalite", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="Localite")
-     * @ORM\JoinColumn(name="localite", referencedColumnName="name")
+     * @ORM\JoinColumn(name="idLocalite", referencedColumnName="name")
      */
-    private $localite;
+    private $idLocalite;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="user", type="integer", nullable=false)
+     * @ORM\Column(name="idUser", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user", referencedColumnName="name")
+     * @ORM\JoinColumn(name="idUser", referencedColumnName="name")
      */
-    private $user;
+    private $idUser;
 
     /**
      * @var string
@@ -189,6 +195,29 @@ class Annonce
     }
 
     /**
+     * Set idRubrique
+     *
+     * @param integer $idRubrique
+     * @return Annonce
+     */
+    public function setIdRubrique($idRubrique)
+    {
+        $this->idRubrique = $idRubrique;
+
+        return $this;
+    }
+
+    /**
+     * Get idRubrique
+     *
+     * @return integer
+     */
+    public function getIdRubrique()
+    {
+        return $this->idRubrique;
+    }
+
+    /**
      * Set idCategory
      *
      * @param integer $idCategory
@@ -209,29 +238,6 @@ class Annonce
     public function getIdCategory()
     {
         return $this->idCategory;
-    }
-
-    /**
-     * Set rubrique
-     *
-     * @param integer $rubrique
-     * @return Annonce
-     */
-    public function setRubrique($rubrique)
-    {
-        $this->rubrique = $rubrique;
-    
-        return $this;
-    }
-
-    /**
-     * Get rubrique
-     *
-     * @return integer 
-     */
-    public function getRubrique()
-    {
-        return $this->rubrique;
     }
 
     /**
@@ -373,95 +379,95 @@ class Annonce
     }
 
     /**
-     * Set gouvernorat
+     * Set idGouvernorat
      *
-     * @param integer $gouvernorat
+     * @param integer $idGouvernorat
      * @return Annonce
      */
-    public function setGouvernorat($gouvernorat)
+    public function setIdGouvernorat($idGouvernorat)
     {
-        $this->gouvernorat = $gouvernorat;
+        $this->idGouvernorat = $idGouvernorat;
     
         return $this;
     }
 
     /**
-     * Get gouvernorat
+     * Get idGouvernorat
      *
      * @return integer 
      */
-    public function getGouvernorat()
+    public function getIdGouvernorat()
     {
-        return $this->gouvernorat;
+        return $this->idGouvernorat;
     }
 
     /**
-     * Set delegation
+     * Set idDelegation
      *
-     * @param integer $delegation
+     * @param integer $idDelegation
      * @return Annonce
      */
-    public function setDelegation($delegation)
+    public function setIdDelegation($idDelegation)
     {
-        $this->delegation = $delegation;
+        $this->idDelegation = $idDelegation;
     
         return $this;
     }
 
     /**
-     * Get delegation
+     * Get idDelegation
      *
      * @return integer 
      */
-    public function getDelegation()
+    public function getIdDelegation()
     {
-        return $this->delegation;
+        return $this->idDelegation;
     }
 
     /**
-     * Set localite
+     * Set idLocalite
      *
-     * @param integer $localite
+     * @param integer $idLocalite
      * @return Annonce
      */
-    public function setLocalite($localite)
+    public function setIdLocalite($idLocalite)
     {
-        $this->localite = $localite;
+        $this->idLocalite = $idLocalite;
     
         return $this;
     }
 
     /**
-     * Get localite
+     * Get idLocalite
      *
      * @return integer 
      */
-    public function getLocalite()
+    public function getIdLocalite()
     {
-        return $this->localite;
+        return $this->idLocalite;
     }
 
     /**
-     * Set user
+     * Set idUser
      *
-     * @param integer $user
+     * @param integer $idUser
      * @return Annonce
      */
-    public function setUser($user)
+    public function setIdUser($idUser)
     {
-        $this->user = $user;
+        $this->idUser = $idUser;
     
         return $this;
     }
 
     /**
-     * Get user
+     * Get idUser
      *
      * @return integer 
      */
-    public function getUser()
+    public function getIdUser()
     {
-        return $this->user;
+        return $this->idUser;
     }
 
     /**

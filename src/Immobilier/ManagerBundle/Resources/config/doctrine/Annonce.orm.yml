@@ -13,6 +13,11 @@ Immobilier\ManagerBundle\Entity\Annonce:
             type: string
             length: 100
             nullable: true
+        idRubrique:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_rubrique
         idCategory:
             type: integer
             unsigned: false
@@ -38,31 +43,9 @@ Immobilier\ManagerBundle\Entity\Annonce:
             unsigned: false
             nullable: false
         description:
-            type: string
-            length: 255
+            type: text
             fixed: false
-            nullable: false
-        idPays:
-            type: integer
-            unsigned: false
-            nullable: false
-            column: id_pays
-        gouvernorat:
-            type: integer
-            unsigned: false
-            nullable: false
-        delegation:
-            type: integer
-            unsigned: false
-            nullable: false
-        localite:
-            type: integer
-            unsigned: false
-            nullable: false
-        user:
-            type: integer
-            unsigned: false
-            nullable: false
+            nullable: true
         lng:
             type: string
             length: 20
@@ -71,4 +54,29 @@ Immobilier\ManagerBundle\Entity\Annonce:
             type: string
             length: 20
             nullable: true
+        idPays:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_pays
+        idGouvernorat:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_gouvernorat
+        idDelegation:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_delegation
+        idLocalite:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_localite
+        idUser:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_user
     lifecycleCallbacks: {  }

@@ -317,9 +317,9 @@ class DefaultController extends Controller
             $user = new User();
             $user->setLogin($request->request->get('nom'));
             $user->setEmail($request->request->get('email'));
-            $this->persistAndFlush($user);
+            //$this->persistAndFlush($user);
             $idUser = $user->getId();
-            $annonce->setUser($idUser);
+            $annonce->setIdUser($idUser);
             $this->persistAndFlush($annonce);
 
             $aPhotos = $request->files->get('annonce');

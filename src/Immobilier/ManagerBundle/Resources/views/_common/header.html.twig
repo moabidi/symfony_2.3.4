@@ -33,7 +33,7 @@
                                 </div><!-- /.site-phone -->
                             </div><!-- /.info -->
 
-                            <a class="btn btn-primary btn-large list-your-property arrow-right" href="{{ path('immobilier_manager_createAnnonce') }}">List your property</a>
+                            <a class="btn btn-primary btn-large list-your-property arrow-right" href="{% if path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) == path('immobilier_manager_createAnnonce') %} # {% else %}{{ path('immobilier_manager_createAnnonce') }} {% endif %}">List your property</a>
                         </div><!-- /.row -->
                     </div><!-- /.navbar-inner -->
                 </div><!-- /.navbar -->

@@ -16,9 +16,9 @@ class AnnonceType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
-        $builder->add(  'idPays', 'entity', array(
-                        'class'   => 'Immobilier\ManagerBundle\Entity\Pays',
-                        'property'  => 'name',
+        $builder->add(  'idRubrique', 'choice', array(
+                        'choices'   => array('1'=> 'rubrique1','2'=>'rubrique2','3'=>'rubrique3'),
+                        'required'  => true,
                     ))
                 ->add(  'idCategory', 'entity', array(
                         'class'   => 'Immobilier\ManagerBundle\Entity\Category',
@@ -32,6 +32,22 @@ class AnnonceType extends AbstractType
                         'class'   => 'Immobilier\ManagerBundle\Entity\Type',
                         'property'  => 'name',
                     ))
+                ->add(  'idPays', 'entity', array(
+                    'class'   => 'Immobilier\ManagerBundle\Entity\Pays',
+                    'property'  => 'name',
+                ))
+                ->add(  'idGouvernorat', 'entity', array(
+                    'class'   => 'Immobilier\ManagerBundle\Entity\Gouvernorat',
+                    'property'  => 'name',
+                ))
+                ->add(  'idDelegation', 'entity', array(
+                    'class'   => 'Immobilier\ManagerBundle\Entity\Delegation',
+                    'property'  => 'name',
+                ))
+                ->add(  'idLocalite', 'entity', array(
+                    'class'   => 'Immobilier\ManagerBundle\Entity\Localite',
+                    'property'  => 'name',
+                ))
                 ->add(  'photos', 'collection', array(
                         // each item in the array will be an "email" field
                         'type'   => 'file',

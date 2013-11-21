@@ -22,7 +22,7 @@
                             <div class="row">
                                 <div class="span4">
                                     <h3><strong>1.</strong> <span>Personal info</span></h3>
-
+                                {#
                                     <div class="control-group">
                                         <label class="control-label" for="inputPropertyFirstName">
                                             First name
@@ -42,7 +42,7 @@
                                             <input type="text" id="inputPropertySurname">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
-
+                                #}
                                     <div class="control-group">
                                         <label class="control-label" for="inputPropertyEmail">
                                             Email
@@ -52,7 +52,42 @@
                                             <input type="text" name="email" id="inputPropertyEmail">
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
-
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idPays.vars.id }}">
+                                            Pays
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idPays,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="contract-type control-group">
+                                        <label class="control-label" for="{{ form.idGouvernorat.vars.id }}">
+                                            Gouvernorat
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idGouvernorat,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idDelegation.vars.id }}">
+                                            Delegation
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idDelegation,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="contract-type control-group">
+                                        <label class="control-label" for="{{ form.idLocalite.vars.id }}">
+                                            Localite
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idLocalite,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
                                     <div class="control-group">
                                         <label class="control-label" for="inputPropertyPhone">
                                             Phone
@@ -75,12 +110,12 @@
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                     <div class="property-type control-group">
-                                        <label class="control-label" for="{{ form.idPays.vars.id }}">
-                                            Location
+                                        <label class="control-label" for="{{ form.idRubrique.vars.id }}">
+                                            Rubrique
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            {{ form_widget(form.idPays,{'attr':{'class':'test' }}) }}
+                                            {{ form_widget(form.idRubrique,{'attr':{'class':'test' }}) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                     <div class="contract-type control-group">
@@ -131,10 +166,49 @@
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->
+                              {#  <div class="span4">
+                                    <h3><strong>3.</strong> <span>Choisir votre adresse</span></h3>
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idRubrique.vars.id }}">
+                                            Pays
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idPays,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idRubrique.vars.id }}">
+                                            Gouvernorat
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idGouvernorat,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idRubrique.vars.id }}">
+                                            Delegation
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idDelegation,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="property-type control-group">
+                                        <label class="control-label" for="{{ form.idRubrique.vars.id }}">
+                                            Localite
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idLocalite,{'attr':{'class':'test' }}) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                </div> #}
                             </div>
                             <div class="row">
                                 <div class="span4">
-                                    <h3><strong>4.</strong> <span>Location of the property</span></h3>
+                                    <h3><strong>4.</strong> <span>Localisation sur le map</span></h3>
                                     <div class="control-group">
                                         <label class="control-label" for="{{ form.latlng.vars.id }}">
                                             Your location in the map
@@ -152,7 +226,7 @@
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->
                                 <div class="span4">
-                                    <h3><strong>3.</strong> <span>Image upload</span></h3>
+                                    <h3><strong>5.</strong> <span>Image upload</span></h3>
 
                                     <div class="fileupload control-group">
                                         <label class="control-label" for="inputPropertyPrice">
