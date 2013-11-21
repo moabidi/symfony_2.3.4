@@ -13,19 +13,23 @@
         <div class="body span6">
             <div class="title-price row">
                 <div class="title span4">
-                    <h2><a href="detail.html">27523 Pacific Coast</a></h2>
+                    <h2><a href="detail.html">{{ annonce.title }}</a></h2>
                 </div><!-- /.title -->
 
                 <div class="price">
-                    1 250 000€
+                    {{ annonce.prix }}€
                 </div><!-- /.price -->
             </div><!-- /.title -->
 
-            <div class="location">Palo Alto CA</div><!-- /.location -->
-            <p>Etiam at ante id enim dictum posuere id vel est. Praesent at massa quis risus cursus tristique vel non orci. Phasellus ut nisi non odio</p>
+            <div class="location">Localite {{ annonce.idLocalite }}</div><!-- /.location -->
+            {% if annonce.description|length > 200 %}
+                <p>{{ annonce.description|slice(0, 200) ~ '...' }}</p>
+            {% else %}
+                <p>Etiam at ante id enim dictum posuere id vel est. Praesent at massa quis risus cursus tristique vel non orci. Phasellus ut nisi non odio</p>
+            {% endif %}
             <div class="area">
                 <span class="key">Area:</span><!-- /.key -->
-                <span class="value">120</span><!-- /.value -->
+                <span class="value">{{ annonce.surface }}</span><!-- /.value -->
             </div><!-- /.area -->
             <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
             <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->

@@ -1145,7 +1145,7 @@ iframe.map {
 .list-your-property-form form {
     margin: 0;
 }
-.list-your-property-form form input[type="text"], .list-your-property-form form input[type="number"] {
+.list-your-property-form form input[type="text"], .list-your-property-form form input[type="number"], .list-your-property-form form input[type="email"] {
     -moz-box-sizing: border-box;
     height: 40px;
     width: 100%;

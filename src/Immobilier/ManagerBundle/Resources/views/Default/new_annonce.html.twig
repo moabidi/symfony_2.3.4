@@ -44,12 +44,12 @@
                                     </div><!-- /.control-group -->
                                 #}
                                     <div class="control-group">
-                                        <label class="control-label" for="inputPropertyEmail">
+                                        <label class="control-label" for="{{ form.email.vars.id }}l">
                                             Email
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <input type="text" name="email" id="inputPropertyEmail">
+                                            {{ form_widget(form.email) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                     <div class="property-type control-group">
@@ -89,12 +89,12 @@
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                     <div class="control-group">
-                                        <label class="control-label" for="inputPropertyPhone">
+                                        <label class="control-label" for="{{ form.phone.vars.id }}">
                                             Phone
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            <input type="text" name="tel" id="inputPropertyPhone">
+                                            {{ form_widget(form.phone) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->
@@ -162,7 +162,7 @@
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                            {{ form_widget(form.prix,{'attr':{'id':'inputPropertyPrice'}} ) }}
+                                            {{ form_widget(form.prix ) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                 </div><!-- /.span4 -->

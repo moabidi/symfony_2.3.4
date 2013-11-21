@@ -42,11 +42,19 @@
                     </div><!-- /.properties-rows -->
                     <div class="properties-rows">
                         <div class="row">
-                          {% set image = 'bundles/immobiliermanager/images/tmp/property-small-1.png' %}
-                          {%  for i in 1..4 %}
+                            {% set image = 'bundles/immobiliermanager/images/tmp/property-small-1.png' %}
+                            {%  for annonce in list_annonces %}
+                                {% include 'ImmobilierManagerBundle:Line:annonce.html.twig' with {'image':image,'annonce':annonce} %}
+                            {%  endfor %}
+
+                        {#
+
+                        {#  for i in 1..4 %}
                                 {% set image = 'bundles/immobiliermanager/images/tmp/property-small-'~i~'.png' %}
                                 {% include 'ImmobilierManagerBundle:Line:annonce.html.twig' with {'image':image} %}
                           {%  endfor %}
+
+                        #}
                         </div><!-- /.row -->
                     </div><!-- /.properties-rows -->
                     <div class="pagination pagination-centered">

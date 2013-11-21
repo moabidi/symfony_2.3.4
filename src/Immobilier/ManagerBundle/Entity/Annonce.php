@@ -35,6 +35,20 @@ class Annonce
     private $title;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=100, nullable=false)
+     */
+    private $phone;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id_rubrique", type="integer", length=2, nullable=false)
@@ -191,6 +205,50 @@ class Annonce
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Annonce
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return Annonce
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
         return $this;
     }
 

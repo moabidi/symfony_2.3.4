@@ -12,7 +12,15 @@ Immobilier\ManagerBundle\Entity\Annonce:
         title:
             type: string
             length: 100
-            nullable: true
+            nullable: false
+        email:
+              type: string
+              length: 100
+              nullable: true
+        phone:
+              type: string
+              length: 100
+              nullable: false
         idRubrique:
             type: integer
             unsigned: false

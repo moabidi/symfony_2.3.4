@@ -59,6 +59,8 @@ class AnnonceType extends AbstractType
                         'allow_add' => true
                     ))
                 ->add('title')
+                ->add('email','email')
+                ->add('phone')
                 ->add('surface')
                 ->add('prix')
                 ->add('description','textarea')
