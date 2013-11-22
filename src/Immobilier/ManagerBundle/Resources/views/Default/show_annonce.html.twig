@@ -30,6 +30,9 @@
                                 <img src="{{ asset(photo) }}" alt="">
                                 </li>
                             {% endfor %}
+                            <li class="active">
+                                <img src="{{ asset('bundles/immobiliermanager/images/tmp/property-large-1.jpg') }}" alt="">
+                            </li>
                         {% else %}
                             <li class="active">
                                 <img src="{{ asset('bundles/immobiliermanager/images/tmp/property-large-1.jpg') }}" alt="">
@@ -98,7 +101,6 @@
 
                     <p><strong>{{  annonce.description }}</strong></p>
 
-                    <h2>Map</h2>
                     <input id="lng" type="hidden" value="{{ annonce.lng }}" />
                     <input id="lat" type="hidden" value="{{ annonce.lat }}" />
                     <div id="property-map"></div><!-- /#property-map -->
