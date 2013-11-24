@@ -108,8 +108,13 @@ class Photo
         return $this->file;
     }
 
-    public function getWebPath()
+    public function getWebPath($id, $path)
     {
+        if($id && $path )
+        {
+            $this->id = $id;
+            $this->path = $path;
+        }
         return null === $this->path ? null : $this->getUploadDir().'/'.$this->id.'.'.$this->path;
     }
 

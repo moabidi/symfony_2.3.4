@@ -356,15 +356,14 @@ class DefaultController extends Controller
             );
         $photos     = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Photo')->findBy(array('idAnnonce'=> $id));
         $type       = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Type')->findOneBy(array('id'=> $annonce->getIdType()));
-
+        $listPhotos = array();
         if(count($photos)>0)
         {
             $i = 0;
-            $listPhotos = array();
             while($i<count($photos))
             {
              $photo =  $photos[$i];
-             $listPhotos[] =  $photo->getWebPath();
+             $listPhotos[] =  $photo->getWebPath($photo->getId(),$photo->path);
              $i++;
             }
         }
@@ -380,8 +379,27 @@ class DefaultController extends Controller
     public function listAnnoncesAction()
     {
         $listAnnonces = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->findAll();
+        //$queury = 'SELECT DISTINCT  ph.id,ph.idAnnonce FROM Immobilier\ManagerBundle\Entity\Photo ph group By ph.idAnnonce ';
+        //$listPhotos = $this->getDoctrine()->getManager()->createQuery($queury)->getResult();
+        $photoRepos = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Photo');
+        $queryPhotos = $photoRepos->createQueryBuilder('ph')
+                    ->select('ph.id,ph.idAnnonce,ph.path')
+                    ->distinct()
+                    ->groupBy('ph.idAnnonce')
+                    ->getQuery();
+        $listPhotos = $queryPhotos->getResult();
+        if(count($listPhotos) > 0 )
+        {
+            $oPhoto = new Photo();
+            foreach( $listPhotos as $photo )
+                $listPhotosLine[$photo['idAnnonce']] = $oPhoto->getWebPath($photo['id'],$photo['path']);
+        }
+        //var_dump($listPhotosLine);
+        //die();
         return $this->render(   'ImmobilierManagerBundle:Default:list_annonces.html.twig',
-                                array('list_annonces'=>$listAnnonces)
+                                array(  'list_annonces' => $listAnnonces,
+                                        'list_photos' => $listPhotosLine
+                                )
                             );
     }
 }

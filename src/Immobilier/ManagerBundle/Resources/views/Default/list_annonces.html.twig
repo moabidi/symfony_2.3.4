@@ -44,6 +44,9 @@
                         <div class="row">
                             {% set image = 'bundles/immobiliermanager/images/tmp/property-small-1.png' %}
                             {%  for annonce in list_annonces %}
+                                {% if annonce.id in list_photos|keys  %}
+                                    {% set image =  list_photos[annonce.id] %}
+                                {% endif %}
                                 {% include 'ImmobilierManagerBundle:Line:annonce.html.twig' with {'image':image,'annonce':annonce} %}
                             {%  endfor %}
 
