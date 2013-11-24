@@ -5,26 +5,30 @@
 
                 <ul class="nav">
                     <li class="menuparent">
-                        <span class="menuparent nolink">Homepage</span>
-                        <ul>
+                        <span>
+                            <a href="{{ path('immobilier_manager_homepage') }}" title="Home">Homepage</a>
+                        </span>
+                       {# <ul>
                             <li><a href="index-slider.html">Homepage with slider</a></li>
                             <li><a href="index.html">Homepage with map</a></li>
                             <li><a href="index-simple.html">Simple homepage</a></li>
                             <li><a href="index-carousel.html">Homepage with carousel</a></li>
-                        </ul>
+                        </ul> #]
                     </li>
                     <li class="menuparent">
                         <span class="menuparent nolink">Listing</span>
-                        <ul>
+                        {#  <ul>
                             <li><a href="listing-grid.html">Listing grid</a></li>
                             <li><a href="listing-grid-filter.html">Listing grid with filter</a></li>
                             <li><a href="listing-rows.html">Listing rows</a></li>
                             <li><a href="{{ path('immobilier_manager_listAnnonces') }}" >Listing rows with filter</a></li>
-                        </ul>
+                        </ul>  #}
                     </li>
                     <li class="menuparent">
-                        <span class="menuparent nolink">Pages</span>
-                        <ul>
+                        <span>
+                            <a href="{{ path('immobilier_manager_listAnnonces') }}" >Pages</a>
+                        </span>
+                        {# <ul>
                             <li><a href="about-us.html">About us</a></li>
                             <li><a href="our-agents.html">Our agents</a></li>
                             <li><a href="faq.html">FAQ</a></li>
@@ -38,15 +42,16 @@
                                 </ul>
                             </li>
                             <li><a href="404.html">404 page</a></li>
-                        </ul>
+                        </ul> #}
                     </li>
                     <li class="menuparent">
-                        <span class="menuparent nolink">Pricing</span>
-                        <ul>
+                        <span> <a href="contact-us.html">Pricing</a> </span>
+                        {# <span class="menuparent nolink">Pricing</span>
+                         <ul>
                             <li><a href="pricing-boxed.html">Boxed pricing</a></li>
                             <li><a href="pricing-multiple.html">Multiple pricing</a></li>
                             <li><a href="pricing-simple.html">Simple Pricing</a></li>
-                        </ul>
+                        </ul> #}
                     </li>
                     <li><a href="contact-us.html">Contact Us</a></li>
                 </ul><!-- /.nav -->

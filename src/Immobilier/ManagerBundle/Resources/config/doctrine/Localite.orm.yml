@@ -18,5 +18,5 @@ Immobilier\ManagerBundle\Entity\Localite:
             type: integer
             unsigned: false
             nullable: false
-            column: delegation_id
+            column: id_delegation
     lifecycleCallbacks: {  }
