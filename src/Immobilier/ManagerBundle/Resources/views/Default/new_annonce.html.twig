@@ -110,15 +110,6 @@
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                     <div class="property-type control-group">
-                                        <label class="control-label" for="{{ form.idRubrique.vars.id }}">
-                                            Rubrique
-                                            <span class="form-required" title="This field is required.">*</span>
-                                        </label>
-                                        <div class="controls">
-                                            {{ form_widget(form.idRubrique,{'attr':{'class':'test' }}) }}
-                                        </div><!-- /.controls -->
-                                    </div><!-- /.control-group -->
-                                    <div class="contract-type control-group">
                                         <label class="control-label" for="{{ form.idCategory.vars.id }}">
                                             Category
                                             <span class="form-required" title="This field is required.">*</span>
@@ -127,23 +118,31 @@
                                             {{ form_widget(form.idCategory) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
-                                    <div class="property-type control-group">
-                                        <label class="control-label" for="{{ form.idType.vars.id }}">
-                                            Type
+                                    <div class="contract-type control-group">
+                                        <label class="control-label" for="{{ form.idRubrique.vars.id }}">
+                                            Rubrique
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
-                                           {{ form_widget(form.idType) }}
+                                            {{ form_widget(form.idRubrique,{'attr':{'class':'test' }}) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
-
-                                    <div class="contract-type control-group">
+                                    <div class="property-type control-group">
                                         <label class="control-label" for="{{ form.nature.vars.id }}">
                                             Nature
                                             <span class="form-required" title="This field is required.">*</span>
                                         </label>
                                         <div class="controls">
                                             {{ form_widget(form.nature) }}
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+                                    <div class="contract-type control-group">
+                                        <label class="control-label" for="{{ form.idType.vars.id }}">
+                                            Type
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            {{ form_widget(form.idType) }}
                                         </div><!-- /.controls -->
                                     </div><!-- /.control-group -->
                                     <div class="area control-group">

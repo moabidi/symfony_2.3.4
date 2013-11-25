@@ -15,6 +15,7 @@ use Immobilier\ManagerBundle\Form\Type\NatureType;
 use Immobilier\ManagerBundle\Entity\Category;
 use Immobilier\ManagerBundle\Form\Type\CategoryType;
 use Immobilier\ManagerBundle\Entity\Annonce;
+use Immobilier\ManagerBundle\Entity\AnnonceRepository;
 use Immobilier\ManagerBundle\Form\Type\AnnonceType;
 use Immobilier\ManagerBundle\Entity\User;
 use Immobilier\ManagerBundle\Entity\Photo;
@@ -320,6 +321,8 @@ class DefaultController extends Controller
             //$this->persistAndFlush($user);
             $idUser = $user->getId();
             $annonce->setIdUser($idUser);
+            $annonce->setCreated(time());
+            $annonce->setUpdated(time());
             $this->persistAndFlush($annonce);
 
             $aPhotos = $request->files->get('annonce');
@@ -376,9 +379,28 @@ class DefaultController extends Controller
     }
 
     /*********************** List Annonces *******************************/
-    public function listAnnoncesAction()
+    public function listAnnoncesAction(Request $request)
     {
-        $listAnnonces = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->findAll();
+        if($request->request->get('filter'))
+        {
+
+            $cond['idLocalite'] = $request->request->get('idLocalite');
+            $cond['idDelegation'] = $request->request->get('idDelegation');
+            $cond['idGouvernorat'] = $request->request->get('idGouvernorat');
+            $cond['idPays'] = $request->request->get('idPays');
+            $cond['idType'] = $request->request->get('idType');
+            $cond['idNature'] = $request->request->get('idNature');
+            $cond['idRubrique'] = $request->request->get('idRubrique');
+            $cond['minPrice'] = $request->request->get('minPrice');
+            $cond['maxPrice'] = $request->request->get('maxPrice');
+            $cond['minArea'] = $request->request->get('minArea');
+            $cond['maxArea'] = $request->request->get('maxArea');
+            $listAnnonces = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->filterAnnonces($cond);
+        }
+        else
+        {
+            $listAnnonces = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Annonce')->findAll();
+        }
         //$queury = 'SELECT DISTINCT  ph.id,ph.idAnnonce FROM Immobilier\ManagerBundle\Entity\Photo ph group By ph.idAnnonce ';
         //$listPhotos = $this->getDoctrine()->getManager()->createQuery($queury)->getResult();
         $photoRepos = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Photo');

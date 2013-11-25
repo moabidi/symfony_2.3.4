@@ -17,7 +17,7 @@ class AnnonceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
         $builder->add(  'idRubrique', 'choice', array(
-                        'choices'   => array('1'=> 'rubrique1','2'=>'rubrique2','3'=>'rubrique3'),
+                        'choices'   => array('1'=> 'Offres','2'=>'Demandes'),
                         'required'  => true,
                     ))
                 ->add(  'idCategory', 'entity', array(
