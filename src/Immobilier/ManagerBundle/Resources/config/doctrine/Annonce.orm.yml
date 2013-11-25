@@ -87,4 +87,12 @@ Immobilier\ManagerBundle\Entity\Annonce:
             unsigned: false
             nullable: false
             column: id_user
+        created:
+            type: integer
+            default: 0
+            nullable: false
+        updated:
+            type: integer
+            default: 0
+            nullable: false
     lifecycleCallbacks: {  }

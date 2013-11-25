@@ -6,8 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
-use Immobilier\ManagerBundle\Entity\Pays;
-use Immobilier\ManagerBundle\Entity\Type;
 
 /**
  * Annonce
@@ -164,17 +162,9 @@ class Annonce
      */
     private $lat;
 
+    private $created;
+    private $updated;
     private $photos;
-
-    public function __construct()
-    {
-        $this->photos = new ArrayCollection();
-    }
-
-    public function getPhotos()
-    {
-        return $this->photos;
-    }
 
     /**
      * Get id
@@ -588,5 +578,34 @@ class Annonce
     public function getLatLng()
     {
         return array('lat'=>$this->getLat(),'lng'=>$this->getLng());
+    }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+    public function setCreated($time)
+    {
+        $this->created = $time;
+    }
+
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated($time)
+    {
+        $this->updated = $time;
+    }
+
+    public function __construct()
+    {
+        $this->photos = new ArrayCollection();
+    }
+
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }
