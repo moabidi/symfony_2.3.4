@@ -19,4 +19,11 @@ Immobilier\ManagerBundle\Entity\Gouvernorat:
             unsigned: false
             nullable: false
             column: id_pays
+    manyToOne:
+        pays:
+            targetEntity: Pays
+            inversedBy: gouvernorats
+            joinColumn:
+                name: id_pays
+                referencedColumnName: id
     lifecycleCallbacks: {  }

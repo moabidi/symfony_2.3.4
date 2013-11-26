@@ -41,6 +41,7 @@ class Gouvernorat
      */
     private $idPays;
 
+    private $pays;
 
     public function __toString()
     {
@@ -87,9 +88,10 @@ class Gouvernorat
      * @param integer $idPays
      * @return Gouvernorat
      */
-    public function setIdPays(Pays $Pays = null)
+    public function setIdPays($idPays)
     {
-        $this->idPays = $Pays;
+        $this->idPays = idPays;
+        return $this;
     }
 
     /**

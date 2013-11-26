@@ -37,43 +37,20 @@ class DefaultController extends Controller
 
         return $this->render('ImmobilierManagerBundle:Default:index.html.twig');
     }
-
-/***************** Pays **********************/
-    public function createPaysAction()
+    /**************** List gouvernorats **********************/
+    public function getGouvernoratsAction($idPays = 1)
     {
-
-        $pays = new Pays();
-        $pays->setName('Tunis');
-        $this->persistAndFlush($pays);
-
-
-        return new Response('Created pays id '.$pays->getId());
-    }
-
-    public function createSynchroPaysAction($namePays)
-    {
-
-        $pays = new Pays();
-        $pays->setName($namePays);
-        $this->persistAndFlush($pays);
-
-        return new Response('Created pays id '.$pays->getId());
-    }
-
-    public function showPaysAction($id)
-    {
-        $pays = $this->getDoctrine()
-            ->getRepository('ImmobilierManagerBundle:Pays')
-            ->find($id);
-
-        if (!$pays) {
-            throw $this->createNotFoundException(
-                'No pays found for id '.$id
-            );
+        if (is_numeric($idPays)){
+            $pays = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Pays')->find($idPays);
+            $listGouvernorats = $pays->getGouvernorats();
+            return $this->render('ImmobilierManagerBundle:Default:list_gov.html.twig', array(
+                'list_gouvernorats' => $listGouvernorats,
+            ));
+        }else{
+            throw $this->createNotFoundException(' id doit etre de type entier : '.$idPays);
         }
-
-        return new Response('Pays dont id '.$id.' is '.$pays->getName());
     }
+
     /***********************  Photo *************************/
     public function createPhotoAction($namePhoto)
     {
@@ -120,68 +97,6 @@ class DefaultController extends Controller
         return new Response('Photo dont id '.$id.' is '.$photo->getName());
     }
 
-    /***********************  Gouvernorat *************************/
-
-    public function createGovActionOld()
-    {
-        $gov = new Gouvernorat();
-        $form = $this->createForm(new GouvernoratType(), $gov);
-        return $this->render('ImmobilierManagerBundle:User:new.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
-
-    public function createGovAction(Request $request)
-    {
-        // just setup a fresh $task object (remove the dummy data)
-        $gov = new Gouvernorat();
-
-        $form = $this->createForm(  new GouvernoratType() ,
-                                    $gov,
-                                    array(
-                                           'action' => $this->generateUrl('immobilier_manager_createGov'),
-                                           'method' => 'POST',
-                                          ));
-
-        $form->handleRequest($request);
-
-        if ($form->isValid())
-        {
-            $this->persistAndFlush($gov);
-            return new Response('ok');
-        }else{
-            return $this->render('ImmobilierManagerBundle:Default:new_gov.html.twig', array(
-                        'form' => $form->createView(),
-                    ));
-        }
-    }
-
-    /***********************  Delegation *************************/
-
-    public function createDelAction(Request $request)
-    {
-        // just setup a fresh $task object (remove the dummy data)
-        $del = new Delegation();
-
-        $form = $this->createForm(  new DelegationType() ,
-                                    $del,
-                                    array(
-                                           'action' => $this->generateUrl('immobilier_manager_createDel'),
-                                           'method' => 'POST',
-                                          ));
-
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $this->persistAndFlush($del);
-            return new Response('ok');
-        }else{
-            return $this->render('ImmobilierManagerBundle:Default:new_del.html.twig', array(
-                        'form' => $form->createView(),
-                    ));
-        }
-    }
-
     /***********************  Type **************************/
     public function createSynchroTypeAction($nameType)
     {
@@ -206,72 +121,6 @@ class DefaultController extends Controller
         }
 
         return new Response('Type dont id '.$id.' is '.$type->getName());
-    }
-
-    /************************ Nature ******************************/
-    public function createTypeAction(Request $request)
-    {
-        $nature = new Type();
-        $form = $this->createForm(  new TypeType,
-            $nature,
-            array( 'action' => $this->generateUrl('immobilier_manager_createType'),
-                'method' => 'POST'
-            )
-        );
-        $form->handleRequest($request);
-        if($form->isValid())
-        {
-            $this->persistAndFlush($nature);
-            return new Response('ok');
-        }else{
-            return $this->render(  'ImmobilierManagerBundle:Default:new_category.html.twig',
-                array('form' => $form->createView())
-            );
-        }
-    }
-
-    /************************ Nature ******************************/
-    public function createNatureAction(Request $request)
-    {
-        $nature = new Nature();
-        $form = $this->createForm(  new NatureType,
-                                    $nature,
-                                    array( 'action' => $this->generateUrl('immobilier_manager_createNature'),
-                                            'method' => 'POST'
-                                    )
-                                );
-        $form->handleRequest($request);
-        if($form->isValid())
-        {
-            $this->persistAndFlush($nature);
-            return new Response('ok');
-        }else{
-            return $this->render(  'ImmobilierManagerBundle:Default:new_category.html.twig',
-                array('form' => $form->createView())
-            );
-        }
-    }
-
-    /************************ Category ******************************/
-    public function createCategoryAction(Request $request)
-    {
-        $category = new Category();
-        $form = $this->createForm(  new CategoryType,
-                                    $category,
-                                    array( 'action' => $this->generateUrl('immobilier_manager_createCategory'),
-                                            'method' => 'POST'
-                                    )
-                                  );
-        $form->handleRequest($request);
-        if($form->isValid())
-        {
-            $this->persistAndFlush($category);
-            return new Response('ok');
-        }else{
-            return $this->render(  'ImmobilierManagerBundle:Default:new_category.html.twig',
-                                    array('form' => $form->createView())
-                                );
-        }
     }
 
     /***********************  Annonce *************************/

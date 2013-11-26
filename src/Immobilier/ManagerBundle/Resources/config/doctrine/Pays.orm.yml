@@ -14,4 +14,8 @@ Immobilier\ManagerBundle\Entity\Pays:
             length: 50
             fixed: false
             nullable: true
+    oneToMany:
+        gouvernorats:
+            targetEntity: Gouvernorat
+            mappedBy: pays
     lifecycleCallbacks: {  }

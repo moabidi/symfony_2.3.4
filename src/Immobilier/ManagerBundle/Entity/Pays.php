@@ -3,6 +3,7 @@
 namespace Immobilier\ManagerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Pays
@@ -29,7 +30,12 @@ class Pays
      */
     private $name;
 
+    protected $gouvernorats;
 
+    public function __construct()
+    {
+        $this->gouvernorats = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -67,5 +73,10 @@ class Pays
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getGouvernorats()
+    {
+        return $this->gouvernorats;
     }
 }
