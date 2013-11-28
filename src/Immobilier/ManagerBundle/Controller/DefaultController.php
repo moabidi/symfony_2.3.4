@@ -38,19 +38,51 @@ class DefaultController extends Controller
         return $this->render('ImmobilierManagerBundle:Default:index.html.twig');
     }
     /**************** List gouvernorats **********************/
-    public function getGouvernoratsAction($idPays = 1)
+    public function getGouvernoratsAction(Request $request)
     {
+        $idPays = $request->request->get('idPays');
         if (is_numeric($idPays)){
             $pays = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Pays')->find($idPays);
             $listGouvernorats = $pays->getGouvernorats();
-            return $this->render('ImmobilierManagerBundle:Default:list_gov.html.twig', array(
-                'list_gouvernorats' => $listGouvernorats,
+            return $this->render('ImmobilierManagerBundle:Default:list_options.html.twig', array(
+                'list_options' => $listGouvernorats,
+                'select_field' => 'gouvernorat'
             ));
         }else{
             throw $this->createNotFoundException(' id doit etre de type entier : '.$idPays);
         }
     }
 
+    /**************** List delegations **********************/
+    public function getDelegationsAction(Request $request)
+    {
+        $idGouvernorat = $request->request->get('idPays');
+        if (is_numeric($idGouvernorat)){
+            $gov = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Gouvernorat')->find($idGouvernorat);
+            $listDelegations = $gov->getDelegations();
+            return $this->render('ImmobilierManagerBundle:Default:list_options.html.twig', array(
+                'list_options' => $listDelegations,
+                'select_field' => 'delegation'
+            ));
+        }else{
+            throw $this->createNotFoundException(' id doit etre de type entier : '.$idGouvernorat);
+        }
+    }
+    /**************** List localites **********************/
+    public function getLocationsAction(Request $request)
+    {
+        $idDelegation = $request->request->get('idPays');
+        if (is_numeric($idDelegation)){
+            $del = $this->getDoctrine()->getRepository('ImmobilierManagerBundle:Delegation')->find($idDelegation);
+            $listLocalites = $del->getLocalites();
+            return $this->render('ImmobilierManagerBundle:Default:list_options.html.twig', array(
+                'list_options' => $listLocalites,
+                'select_field' => 'localite'
+            ));
+        }else{
+            throw $this->createNotFoundException(' id doit etre de type entier : '.$idDelegation);
+        }
+    }
     /***********************  Photo *************************/
     public function createPhotoAction($namePhoto)
     {

@@ -4,6 +4,7 @@ namespace Immobilier\ManagerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 //use Immobilier\ManagerBundle\Entity\Gouvernorat;
 
 
@@ -41,7 +42,13 @@ class Delegation
      *
      */
     private $idGouvernorat;
+    private $gouvernorat;
+    protected $localites;
 
+    public function __construct()
+    {
+        $this->localites = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -103,5 +110,10 @@ class Delegation
     public function getIdGouvernorat()
     {
         return $this->idGouvernorat;
+    }
+
+    public function getLocalites()
+    {
+        return $this->localites;
     }
 }

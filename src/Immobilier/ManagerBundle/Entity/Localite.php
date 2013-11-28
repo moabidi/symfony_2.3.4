@@ -36,7 +36,7 @@ class Localite
      * @JoinColumn(name="delegation_id", referencedColumnName="name")
      */
     private $delegationId;
-
+    private $delegation;
 
 
     /**

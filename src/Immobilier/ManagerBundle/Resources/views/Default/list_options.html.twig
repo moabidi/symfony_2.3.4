@@ -1,0 +1,14 @@
+{# src/Acme/TaskBundle/Resources/views/Default/new_gov.html.twig #}
+
+{#{ form(form) }#}
+{%  if list_options|length > 0  %}
+    {%  if select_field == 'gouvernorat' %}
+    <select id="annonce_idGouvernorat" class="test" name="annonce[idGouvernorat]" data-placeholder="Choose a Gouvernorat..."> {% for option in list_options %}<option value="{{ option.id }}">{{ option.name }}</option>{% endfor %}</select>
+    {%  elseif select_field == 'delegation' %}
+    <select id="annonce_idDelegation" class="test" name="annonce[idGouvernorat]" data-placeholder="Choose a Delegation..."> {% for option in list_options %}<option value="{{ option.id }}">{{ option.name }}</option>{% endfor %}</select>
+    {%  elseif select_field == 'localite' %}
+    <select id="annonce_idLocalite" class="test" name="annonce[idLocalite]" data-placeholder="Choose a Localite..."> {% for option in list_options %}<option value="{{ option.id }}">{{ option.name }}</option>{% endfor %}</select>
+    {% endif %}
+{% else %}
+    No suggestion
+{% endif %}

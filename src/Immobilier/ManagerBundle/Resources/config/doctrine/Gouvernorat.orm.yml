@@ -26,4 +26,8 @@ Immobilier\ManagerBundle\Entity\Gouvernorat:
             joinColumn:
                 name: id_pays
                 referencedColumnName: id
+    oneToMany:
+        delegations:
+            targetEntity: Delegation
+            mappedBy: gouvernorat
     lifecycleCallbacks: {  }

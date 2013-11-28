@@ -19,4 +19,15 @@ Immobilier\ManagerBundle\Entity\Delegation:
             unsigned: false
             nullable: false
             column: id_gouvernorat
+    manyToOne:
+        gouvernorat:
+            targetEntity: Gouvernorat
+            inversedBy: delegations
+            joinColumn:
+                name: id_gouvernorat
+                referencedColumnName: id
+    oneToMany:
+        localites:
+            targetEntity: Localite
+            mappedBy: delegation
     lifecycleCallbacks: {  }

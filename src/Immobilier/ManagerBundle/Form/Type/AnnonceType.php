@@ -36,18 +36,21 @@ class AnnonceType extends AbstractType
                     'class'   => 'Immobilier\ManagerBundle\Entity\Pays',
                     'property'  => 'name',
                 ))
-                ->add(  'idGouvernorat', 'entity', array(
+                ->add(  'idGouvernorat', 'choice', array('empty_value' => 'Choose your gouvernorat'))
+                /*->add(  'idGouvernorat', 'entity', array(
                     'class'   => 'Immobilier\ManagerBundle\Entity\Gouvernorat',
                     'property'  => 'name',
-                ))
-                ->add(  'idDelegation', 'entity', array(
+                ))*/
+                ->add(  'idDelegation', 'choice', array('empty_value' => 'Choose your delegation'))
+                /*->add(  'idDelegation', 'entity', array(
                     'class'   => 'Immobilier\ManagerBundle\Entity\Delegation',
                     'property'  => 'name',
-                ))
-                ->add(  'idLocalite', 'entity', array(
+                ))*/
+                ->add(  'idLocalite', 'choice', array('empty_value' => 'Choose your location'))
+                /*->add(  'idLocalite', 'entity', array(
                     'class'   => 'Immobilier\ManagerBundle\Entity\Localite',
                     'property'  => 'name',
-                ))
+                ))*/
                 ->add(  'photos', 'collection', array(
                         // each item in the array will be an "email" field
                         'type'   => 'file',

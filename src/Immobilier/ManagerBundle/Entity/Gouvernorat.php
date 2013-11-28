@@ -5,6 +5,7 @@ namespace Immobilier\ManagerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Immobilier\ManagerBundle\Entity\Pays;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Gouvernorat
@@ -40,8 +41,14 @@ class Gouvernorat
      * @Assert\Type(type="Immobilier\ManagerBundle\Entity\Pays")
      */
     private $idPays;
-
     private $pays;
+
+    protected $delegations;
+
+    public function __construct()
+    {
+        $this->delegations = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -102,5 +109,10 @@ class Gouvernorat
     public function getIdPays()
     {
         return $this->idPays;
+    }
+
+    public function getDelegations()
+    {
+        return $this->delegations;
     }
 }
